@@ -1,0 +1,7 @@
+
+Reference
+http://www.codershood.info/2017/02/09/real-time-private-chatting-app-using-angular-2-nodejs-mongodb-socket-io-part-1/
+
+
+Git
+https://github.com/Nishaan-Nodejs/Private-chat-app-angular-boilerplate
