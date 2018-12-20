@@ -5,3 +5,7 @@ http://www.codershood.info/2017/02/09/real-time-private-chatting-app-using-angul
 
 Git
 https://github.com/Nishaan-Nodejs/Private-chat-app-angular-boilerplate
+
+
+Project Description:
+Node.js, Express.js, Socket.io, Mongodb real-time chat application.
