@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { HomeComponent } from './home.component';
+import { AuthenticationComponent } from './authentication.component';
 
 const routes: Routes = [{
 	path: '',
-	component: HomeComponent,
-	}, {
+	component: AuthenticationComponent
+}, {
 	path: '**',
 	redirectTo: '',
 }];
@@ -16,4 +16,4 @@ const routes: Routes = [{
   exports: [RouterModule]
 })
 
-export class HomeRoutingModule { }
+export class AuthenticationRoutingModule { }

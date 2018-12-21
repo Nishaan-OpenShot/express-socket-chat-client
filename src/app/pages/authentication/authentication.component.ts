@@ -1,4 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormGroup } from '@angular/forms';
+
+import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
+
+/* Importing services starts*/
+import { FormService } from './../../services/form/form.service';
+import { ChatService } from './../../services/chat/chat.service';
+/* Importing services ends*/
+
+/* importing interfaces starts */
+import { UsernameAvailable } from './../../interfaces/username-available';
+import { Auth } from './../../interfaces/auth';
+/* importing interfaces ends */
 
 @Component({
   selector: 'app-authentication',
@@ -7,7 +21,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthenticationComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+		private formService: FormService,
+		private chatService: ChatService) { }
 
   ngOnInit() {
   }
