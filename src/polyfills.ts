@@ -87,3 +87,9 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+(window as any).global = window;
+try {
+	window.scrollTo({ left: 0, top: 0, behavior: 'smooth' });
+} catch (e) {
+	window.scrollTo(0, 0);
+}

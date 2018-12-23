@@ -1,9 +1,20 @@
 import { Injectable } from '@angular/core';
+import { CanActivate, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class AuthGuardService {
+/*Importing service starts*/
+import { ChatService } from './../chat/chat.service';
+/*Importing service ends*/
 
-  constructor() { }
+@Injectable()
+export class AuthGuardService implements CanActivate {
+
+  constructor(
+    public chatService: ChatService,
+    public router: Router
+  ) { }
+
+  canActivate(): Observable<boolean> {
+    return this.chatService.userSessionCheck();
+  }
 }
