@@ -12,10 +12,10 @@ import { SocketService } from './socket/socket.service';
     CommonModule
   ],
   providers: [
-		FormService,
-		ChatService,
-		AuthGuardService,
-		SocketService
-	]
+    FormService,
+    ChatService,
+    AuthGuardService,
+    SocketService
+  ]
 })
 export class ServicesModule { }
