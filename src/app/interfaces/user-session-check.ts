@@ -1,5 +1,5 @@
 export interface UserSessionCheck {
     error: boolean;
-	message: string;
-	username: string;
+    message: string;
+    username: string;
 }

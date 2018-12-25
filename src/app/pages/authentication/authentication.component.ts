@@ -17,7 +17,7 @@ import { Auth } from './../../interfaces/auth';
 @Component({
   selector: 'app-authentication',
   templateUrl: './authentication.component.html',
-  styleUrls: ['./authentication.component.css']
+  styleUrls: ['./authentication.component.scss']
 })
 export class AuthenticationComponent implements OnInit {
 
@@ -41,13 +41,13 @@ export class AuthenticationComponent implements OnInit {
   ngOnInit() {
     this.overlayDisplay = true;
     this.chatService.userSessionCheck().subscribe( async (loggedIn: boolean) => {
-    if (loggedIn) {
-      await this.router.navigate(['/pages/home']);
-      this.overlayDisplay = false;
-    } else {
-      this.overlayDisplay = false;
-      this.getUsernameSuggestion();
-    }
+      if (loggedIn) {
+        await this.router.navigate(['/pages/home']);
+        this.overlayDisplay = false;
+      } else {
+        this.overlayDisplay = false;
+        this.getUsernameSuggestion();
+      }
     });
   }
 

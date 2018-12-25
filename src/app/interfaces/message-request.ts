@@ -1,4 +1,4 @@
 export interface MessageRequest {
     userId: string;
-	toUserId: string;
+    toUserId: string;
 }

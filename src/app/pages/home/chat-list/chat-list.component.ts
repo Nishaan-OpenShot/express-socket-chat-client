@@ -13,14 +13,14 @@ import { ChatListResponse } from './../../../interfaces/chat-list-response';
 @Component({
   selector: 'app-chat-list',
   templateUrl: './chat-list.component.html',
-  styleUrls: ['./chat-list.component.scss']
+  styleUrls: ['./chat-list.component.css']
 })
 export class ChatListComponent implements OnInit {
 
   loading = true;
   userId = null;
   chatListUsers: User[] = [];
-private selectedUserId: string = null;
+  private selectedUserId: string = null;
 
   constructor(
     private chatService: ChatService,
@@ -32,12 +32,14 @@ private selectedUserId: string = null;
   ngOnInit() {
     this.loading = true;
     this.userId = this.dataShareService.getUserId();
+    console.log(this.userId);
     this.socketService.getChatList(this.userId).subscribe((chatListResponse: ChatListResponse) => {
+      console.log('chatListResponse', chatListResponse);
         this.renderChatList(chatListResponse);
     });
-}
+  }
 
-renderChatList(chatListResponse: ChatListResponse): void {
+  renderChatList(chatListResponse: ChatListResponse): void {
     if (!chatListResponse.error) {
         if (chatListResponse.singleUser) {
             if (this.chatListUsers.length > 0) {

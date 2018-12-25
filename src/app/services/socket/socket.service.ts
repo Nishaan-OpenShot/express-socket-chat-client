@@ -46,6 +46,7 @@ export class SocketService {
 	* Method to receive chat-list-response event.
   */
   getChatList(userId: string = null): Observable<ChatListResponse> {
+    console.log('userId:', userId);
     if (userId !== null) {
       this.socket.emit('chat-list', { userId: userId });
     }
