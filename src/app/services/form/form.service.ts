@@ -9,24 +9,23 @@ import { MessageValidator } from './../../classes/validators/message-validator';
 export class FormService {
 
   constructor() { }
-  
-	createLoginForm(): FormGroup {
-		return new FormBuilder().group({
-			username: new UsernameValidator(),
-			password: new PasswordValidator(),
-		});
-	}
-
-	createRegistrationForm(): FormGroup {
-		return new FormBuilder().group({
-			username: new UsernameValidator(),
-			password: new PasswordValidator(),
-		});
+  createLoginForm(): FormGroup {
+    return new FormBuilder().group({
+      username: new UsernameValidator(),
+      password: new PasswordValidator(),
+    });
   }
-  
-	createMessageForm(): FormGroup {
-		return new FormBuilder().group({
-			message: new MessageValidator
-		});
-	}
+
+  createRegistrationForm(): FormGroup {
+    return new FormBuilder().group({
+      username: new UsernameValidator(),
+      password: new PasswordValidator(),
+    });
+  }
+
+  createMessageForm(): FormGroup {
+    return new FormBuilder().group({
+      message: new MessageValidator
+    });
+  }
 }

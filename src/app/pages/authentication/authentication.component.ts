@@ -21,12 +21,83 @@ import { Auth } from './../../interfaces/auth';
 })
 export class AuthenticationComponent implements OnInit {
 
+  public setTabPosition = 'center';
+  public isuserNameAvailable = false;
+  public overlayDisplay = false;
+  public loginError =  false;
+
+  private registrationForm: FormGroup;
+  private loginForm: FormGroup;
+
   constructor(
     private router: Router,
-		private formService: FormService,
-		private chatService: ChatService) { }
+    private formService: FormService,
+    private chatService: ChatService) {
+      this.registrationForm = this.formService.createRegistrationForm();
+      this.loginForm = this.formService.createLoginForm();
+     }
 
   ngOnInit() {
+  }
+
+  login(): void {
+    if (this.loginForm.valid) {
+      this.overlayDisplay = true;
+      this.chatService.login(this.loginForm.value).subscribe(
+        (response: Auth) => {
+          this.overlayDisplay = false;
+          localStorage.setItem('userid', response.userId);
+          this.router.navigate(['/pages/home']);
+        }, (error) => {
+          /* Uncomment it, Incase if you like to reset the Login Form. */
+          // this.loginForm.reset();
+          this.overlayDisplay = false;
+          this.loginError =  true;
+        });
+    }
+  }
+
+  register(): void {
+    if (this.registrationForm.valid) {
+      this.overlayDisplay = false;
+      this.chatService.register(this.registrationForm.value).subscribe(
+        (response: Auth) => {
+          localStorage.setItem('userid', response.userId);
+          this.router.navigate(['/home']);
+        },
+        (error) => {
+          this.overlayDisplay = true;
+           /* Uncomment it, Incase if like to reset the Login Form. */                    // this.registrationForm.reset();
+           alert('Something bad happened; please try again later.');
+        }
+      );
+    }
+  }
+
+  getUsernameSuggestion(): void {
+    this.registrationForm.controls['username'].valueChanges
+    .pipe(
+      map((term) => {
+        this.isuserNameAvailable = false;
+        return term;
+      })
+    ).pipe(
+      debounceTime(800),
+      distinctUntilChanged()
+    )
+    .subscribe((term: string) => {
+      if(term !== '') {
+        this.overlayDisplay = true;
+        this.chatService.usernameAvailable(term).subscribe((response: UsernameAvailable) => {
+          this.overlayDisplay = false;
+          if (response.error) {
+            this.isuserNameAvailable = true;
+          } else {
+            this.isuserNameAvailable = false;
+          }
+        });
+      }
+    });
   }
 
 }
