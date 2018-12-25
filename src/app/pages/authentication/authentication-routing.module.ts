@@ -4,11 +4,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthenticationComponent } from './authentication.component';
 
 const routes: Routes = [{
-	path: '',
-	component: AuthenticationComponent
+  path: '',
+  component: AuthenticationComponent
 }, {
-	path: '**',
-	redirectTo: '',
+  path: '**',
+  redirectTo: '',
 }];
 
 @NgModule({

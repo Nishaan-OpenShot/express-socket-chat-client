@@ -18,9 +18,10 @@ import { Auth } from './../../interfaces/auth';
 })
 export class HomeComponent implements OnInit {
 
-  userId = '';
-  username = '';
-  overlayDisplay = true;
+  public userId: string = null;
+  public username: string = null;
+  public overlayDisplay = true;
+
   constructor(
     private chatService: ChatService,
     private socketService: SocketService,
@@ -31,6 +32,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.userId = this.dataShareService.getUserId();
     this.username = this.dataShareService.getUserName();
+    this.establishSocketConnection();
   }
 
   async establishSocketConnection() {
@@ -47,4 +49,16 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  logout() {
+    this.chatService.removeLS()
+    .then((removedLs: boolean) => {
+      this.socketService.logout({ userId: this.userId }).subscribe((response: Auth) => {
+        this.router.navigate(['/']);
+      });
+    })
+    .catch((error: Error) => {
+      alert(' This App is Broken, we are working on it. try after some time.');
+      throw error;
+    });
+  }
 }
