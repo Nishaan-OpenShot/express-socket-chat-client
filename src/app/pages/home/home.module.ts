@@ -13,9 +13,9 @@ import { ChatListModule } from './chat-list/chat-list.module';
   imports: [
     CommonModule,
     HomeRoutingModule,
-		UISupportModule,
-		ConversationModule,
-		ChatListModule
+    UISupportModule,
+    ConversationModule,
+    ChatListModule
   ]
 })
 export class HomeModule { }
