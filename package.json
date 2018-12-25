@@ -10,16 +10,6 @@
         "lint": "ng lint",
         "e2e": "ng e2e"
     },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/Nishaan-OpenShot/express-socket-chat-client.git"
-    },
-    "author": "Gurpreet Deol",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/Nishaan-OpenShot/express-socket-chat-client/issues"
-    },
-    "homepage": "https://github.com/Nishaan-OpenShot/express-socket-chat-client#readme",
     "private": true,
     "dependencies": {
         "@angular/animations": "~7.1.0",
@@ -27,7 +17,7 @@
         "@angular/compiler": "~7.1.0",
         "@angular/core": "~7.1.0",
         "@angular/forms": "~7.1.0",
-        "@angular/http": "^7.1.4",
+        "@angular/http": "~7.1.0",
         "@angular/platform-browser": "~7.1.0",
         "@angular/platform-browser-dynamic": "~7.1.0",
         "@angular/router": "~7.1.0",
@@ -57,5 +47,15 @@
         "ts-node": "~7.0.0",
         "tslint": "~5.11.0",
         "typescript": "~3.1.6"
-    }
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/Nishaan-OpenShot/express-socket-chat-client.git"
+  },
+  "author": "Gurpreet Deol",
+  "license": "ISC",
+  "bugs": {
+      "url": "https://github.com/Nishaan-OpenShot/express-socket-chat-client/issues"
+  },
+  "homepage": "https://github.com/Nishaan-OpenShot/express-socket-chat-client#readme"
 }
